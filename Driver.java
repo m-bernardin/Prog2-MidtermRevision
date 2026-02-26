@@ -10,7 +10,6 @@ public class Driver {
             case 1:
                 ArrayList<String> words=new ArrayList<>();
                 while(running){
-                    System.out.println("**running status "+running);
                     System.out.print("Would you like to enter a word? (Y/n)\n> ");
                     input.nextLine();
                     if(input.next().equals("n")){
@@ -21,6 +20,7 @@ public class Driver {
                         words.add(input.next());
                     }
                 }
+                input.close();
                 if(!words.isEmpty()){
                 if(words.size()==1)System.out.println("Word reversed: "+Compare.compare(words.get(0)));
                 else if(words.size()==2)System.out.println("Words are the same: "+Compare.compare(words.get(0), words.get(1)));
@@ -32,7 +32,6 @@ public class Driver {
             case 2:
                 ArrayList<Integer> nums=new ArrayList<>();
                 while(running){
-                    System.out.println("**running status "+running);
                     System.out.print("Would you like to enter a number? (Y/n)\n> ");
                     input.nextLine();
                     if(input.next().equals("n")){
@@ -43,7 +42,28 @@ public class Driver {
                         nums.add(input.nextInt());
                     }
                 }
+                input.close();
                 if(!nums.isEmpty())System.out.println(Numbers.getResults(nums));
+                else System.out.println("No input provided...");
+                System.out.println("Goodbye :)");
+                break;
+            case 3:
+                ArrayList<String> words2=new ArrayList<>();
+                while(running){
+                    System.out.print("Would you like to enter a word? (Y/n)\n> ");
+                    input.nextLine();
+                    if(input.next().equals("n")){
+                        running=false;
+                    }
+                    else{
+                        System.out.print("Please enter a word\n> ");
+                        words2.add(input.next());
+                    }
+                }
+                input.close();
+                if(!words2.isEmpty()){
+                    System.out.println(RepeatedWordsCounter.findRepeats(words2));
+                }
                 else System.out.println("No input provided...");
                 System.out.println("Goodbye :)");
                 break;

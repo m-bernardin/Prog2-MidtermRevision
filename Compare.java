@@ -24,10 +24,20 @@ public class Compare{
         else return false;
     }
     public static String compare(ArrayList<String> words){
-        ArrayList<Character> letters=new ArrayList<>();
-        letters.add('a');
-        for(String word:words){
-
+        String answer="Uncommon letters between all words: ";
+        String letters="";
+        for(int letterPointer=65;letterPointer<=90;++letterPointer){
+            for(String word:words){
+                if(word.contains((char)letterPointer+"")||word.contains((char)letterPointer+32+""))letters+=(char)letterPointer;
+            }
         }
+        for(int letterPointer=65;letterPointer<=90;++letterPointer){
+            boolean uncommmonLetter=true;
+            for(String word:words){
+                if((word.contains((char)letterPointer+"")||word.contains((char)letterPointer+32+""))&&(letters.contains((char)letterPointer+"")||letters.contains((char)letterPointer+32+"")))uncommmonLetter=false;
+            }
+            if(uncommmonLetter)answer+=(char)letterPointer+" ";
+        }
+        return answer;
     }
 }

@@ -30,7 +30,7 @@ public class Numbers {
         results.add(oddNums);
         answer+="\nResults:\n";
         for(String result:results){
-            answer+=result;
+            answer+=result+"\n";
         }
         return answer;
     }
