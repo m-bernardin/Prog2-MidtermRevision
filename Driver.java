@@ -25,9 +25,9 @@ public class Driver {
                 if(words.size()==1)System.out.println("Word reversed: "+Compare.compare(words.get(0)));
                 else if(words.size()==2)System.out.println("Words are the same: "+Compare.compare(words.get(0), words.get(1)));
                 else System.out.println("Uncommon letters between all words: "+Compare.compare(words));
-                System.out.println("Goodbye :)");
                 }
-                else System.out.println("Goodbye :)");
+                else System.out.println("No input provided...");
+                System.out.println("Goodbye :)");
                 break;
             case 2:
                 ArrayList<Integer> nums=new ArrayList<>();
@@ -66,6 +66,10 @@ public class Driver {
                 }
                 else System.out.println("No input provided...");
                 System.out.println("Goodbye :)");
+                break;
+            case 4:
+                input.close();
+                System.out.println("Goobye :)");
                 break;
         }
     }

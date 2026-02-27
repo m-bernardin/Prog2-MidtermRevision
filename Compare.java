@@ -20,23 +20,28 @@ public class Compare{
         return answer;
     }
     public static boolean compare(String word1,String word2){
-        if(word1.equals(word2))return true;
+        if(word1.trim().toLowerCase().equals(word2.trim().toLowerCase()))return true;
         else return false;
     }
     public static String compare(ArrayList<String> words){
-        String answer="Uncommon letters between all words: ";
+        String answer="";
         String letters="";
-        for(int letterPointer=65;letterPointer<=90;++letterPointer){
-            for(String word:words){
-                if(word.contains((char)letterPointer+"")||word.contains((char)letterPointer+32+""))letters+=(char)letterPointer;
+        for(String word:words){
+            char[] lettersInWord=word.trim().toLowerCase().toCharArray();
+            for(int i=0;i<lettersInWord.length;++i){
+                letters+=lettersInWord[i];
             }
         }
-        for(int letterPointer=65;letterPointer<=90;++letterPointer){
-            boolean uncommmonLetter=true;
+        String commonLetters="";
+        for(int letterPointer=97;letterPointer<=122;++letterPointer){
+            int commonFlag=0;
             for(String word:words){
-                if((word.contains((char)letterPointer+"")||word.contains((char)letterPointer+32+""))&&(letters.contains((char)letterPointer+"")||letters.contains((char)letterPointer+32+"")))uncommmonLetter=false;
+                if(!word.contains((char)letterPointer+""))++commonFlag;
             }
-            if(uncommmonLetter)answer+=(char)letterPointer+" ";
+            if(commonFlag<2)commonLetters+=(char)letterPointer;
+        }
+        for(int letterPointer=97;letterPointer<=122;++letterPointer){
+            if((!commonLetters.contains((char)letterPointer+""))&&(letters.contains((char)letterPointer+"")))answer+=(char)letterPointer+" ";
         }
         return answer;
     }
